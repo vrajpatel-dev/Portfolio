@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peak Performance Gym | Transform Your Fitness</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e63946;
+            --dark: #1d3557;
+            --medium: #457b9d;
+            --light: #a8dadc;
+            --white: #f1faee;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 14px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #d32f3c;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-secondary {
+            background-color: var(--dark);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #152642;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--dark);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(29, 53, 87, 0.9), rgba(29, 53, 87, 0.8)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 180px 0 100px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        /* Problems & Solutions Section */
+        .problems-solutions {
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--dark);
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .problem-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+        
+        .problem-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .problem-icon {
+            background-color: var(--light);
+            color: var(--dark);
+            font-size: 40px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .problem-content {
+            padding: 25px;
+        }
+        
+        .problem-content h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .solution-badge {
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        /* Membership Plans */
+        .membership {
+            background-color: #f5f7fa;
+        }
+        
+        .plan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .plan-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .plan-card.popular {
+            transform: scale(1.05);
+            border-top: 5px solid var(--primary);
+        }
+        
+        .plan-header {
+            padding: 30px;
+            text-align: center;
+            background-color: var(--dark);
+            color: white;
+        }
+        
+        .plan-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+        
+        .plan-price span {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        .plan-features {
+            padding: 30px;
+        }
+        
+        .plan-features ul {
+            list-style: none;
+        }
+        
+        .plan-features ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .plan-features ul li i {
+            color: var(--primary);
+            margin-right: 10px;
+        }
+        
+        .plan-footer {
+            padding: 0 30px 30px;
+            text-align: center;
+        }
+        
+        .popular-tag {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 40px;
+            transform: rotate(45deg);
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        
+        /* Lead Generation Form */
+        .lead-generation {
+            background-color: white;
+        }
+        
+        .lead-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .lead-content h2 {
+            color: var(--dark);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .lead-form {
+            background-color: var(--dark);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            color: white;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 4px;
+            border: none;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: 2px solid var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .lead-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .plan-card.popular {
+                transform: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .problem-grid,
+            .plan-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .lead-form {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">PEAK<span>PERFORMANCE</span></a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#problems">Solutions</a></li>
+                    <li><a href="#membership">Membership</a></li>
+                    <li><a href="#lead">Free Trial</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Transform Your Fitness Journey</h1>
+            <p>At Peak Performance Gym, we solve the common problems that keep people from achieving their fitness goals. Join our community and experience the difference.</p>
+            <a href="#lead" class="btn">Start Your Free Trial</a>
+        </div>
+    </section>
+
+    <!-- Problems & Solutions Section -->
+    <section class="problems-solutions" id="problems">
+        <div class="container">
+            <div class="section-title">
+                <h2>Gym Problems Solved</h2>
+                <p>We've identified the most common gym challenges and created solutions for each</p>
+            </div>
+            
+            <div class="problem-grid">
+                <!-- Problem 1 -->
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="problem-content">
+                        <div class="solution-badge">SOLUTION</div>
+                        <h3>No Time to Exercise</h3>
+                        <p>Busy schedule? We offer 30-minute high-intensity sessions and flexible scheduling with early morning, lunchtime, and late evening slots.</p>
+                    </div>
+                </div>
+                
+                <!-- Problem 2 -->
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <div class="problem-content">
+                        <div class="solution-badge">SOLUTION</div>
+                        <h3>Intimidating Environment</h3>
+                        <p>Our certified trainers provide personalized onboarding and we have designated beginner zones to help you feel comfortable from day one.</p>
+                    </div>
+                </div>
+                
+                <!-- Problem 3 -->
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <div class="problem-content">
+                        <div class="solution-badge">SOLUTION</div>
+                        <h3>Lack of Motivation</h3>
+                        <p>Join our group challenges, track your progress with our app, and get support from our community to stay motivated and accountable.</p>
+                    </div>
+                </div>
+                
+                <!-- Problem 4 -->
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="problem-content">
+                        <div class="solution-badge">SOLUTION</div>
+                        <h3>No Visible Results</h3>
+                        <p>Our results-based approach includes progress tracking, nutritional guidance, and regular assessments to ensure you're moving toward your goals.</p>
+                    </div>
+                </div>
+                
+                <!-- Problem 5 -->
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <div class="problem-content">
+                        <div class="solution-badge">SOLUTION</div>
+                        <h3>Expensive Memberships</h3>
+                        <p>We offer flexible pricing with no long-term contracts, family discounts, and corporate wellness programs to fit any budget.</p>
+                    </div>
+                </div>
+                
+                <!-- Problem 6 -->
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-cookie-bite"></i>
+                    </div>
+                    <div class="problem-content">
+                        <div class="solution-badge">SOLUTION</div>
+                        <h3>Poor Nutrition Guidance</h3>
+                        <p>Get personalized meal plans, cooking workshops, and nutrition coaching as part of your membership to complement your workouts.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="#membership" class="btn btn-secondary">View Our Membership Plans</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Plans Section -->
+    <section class="membership" id="membership">
+        <div class="container">
+            <div class="section-title">
+                <h2>Membership Plans</h2>
+                <p>Choose the plan that fits your fitness goals and budget</p>
+            </div>
+            
+            <div class="plan-grid">
+                <!-- Basic Plan -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Basic</h3>
+                        <div class="plan-price">$29<span>/month</span></div>
+                        <p>Access to gym equipment</p>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Unlimited gym access</li>
+                            <li><i class="fas fa-check"></i> Basic fitness assessment</li>
+                            <li><i class="fas fa-check"></i> Locker room access</li>
+                            <li><i class="fas fa-times"></i> Group classes</li>
+                            <li><i class="fas fa-times"></i> Personal training</li>
+                            <li><i class="fas fa-times"></i> Nutritional guidance</li>
+                        </ul>
+                    </div>
+                    <div class="plan-footer">
+                        <a href="#lead" class="btn">Get Started</a>
+                    </div>
+                </div>
+                
+                <!-- Popular Plan -->
+                <div class="plan-card popular">
+                    <div class="popular-tag">MOST POPULAR</div>
+                    <div class="plan-header">
+                        <h3>Pro</h3>
+                        <div class="plan-price">$59<span>/month</span></div>
+                        <p>Complete fitness solution</p>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Everything in Basic</li>
+                            <li><i class="fas fa-check"></i> Unlimited group classes</li>
+                            <li><i class="fas fa-check"></i> 2 personal training sessions</li>
+                            <li><i class="fas fa-check"></i> Nutritional guidance</li>
+                            <li><i class="fas fa-check"></i> Progress tracking app</li>
+                            <li><i class="fas fa-times"></i> VIP class booking</li>
+                        </ul>
+                    </div>
+                    <div class="plan-footer">
+                        <a href="#lead" class="btn">Get Started</a>
+                    </div>
+                </div>
+                
+                <!-- Premium Plan -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Premium</h3>
+                        <div class="plan-price">$99<span>/month</span></div>
+                        <p>All-inclusive experience</p>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Everything in Pro</li>
+                            <li><i class="fas fa-check"></i> Unlimited personal training</li>
+                            <li><i class="fas fa-check"></i> VIP class booking</li>
+                            <li><i class="fas fa-check"></i> Meal planning service</li>
+                            <li><i class="fas fa-check"></i> Recovery amenities</li>
+                            <li><i class="fas fa-check"></i> Bring a friend monthly</li>
+                        </ul>
+                    </div>
+                    <div class="plan-footer">
+                        <a href="#lead" class="btn">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Generation Section -->
+    <section class="lead-generation" id="lead">
+        <div class="container">
+            <div class="lead-container">
+                <div class="lead-content">
+                    <h2>Start Your Free 7-Day Trial</h2>
+                    <p>We're confident you'll love Peak Performance Gym. Try us risk-free for 7 days with full access to facilities and classes.</p>
+                    <p>No credit card required for the trial. Fill out the form and our team will contact you to schedule your first visit.</p>
+                    
+                    <div style="margin-top: 30px;">
+                        <h3>Why Choose Us?</h3>
+                        <ul style="list-style: none; margin-top: 15px;">
+                            <li><i class="fas fa-check" style="color: var(--primary);"></i> 24/7 gym access</li>
+                            <li><i class="fas fa-check" style="color: var(--primary);"></i> Over 50 weekly group classes</li>
+                            <li><i class="fas fa-check" style="color: var(--primary);"></i> Certified personal trainers</li>
+                            <li><i class="fas fa-check" style="color: var(--primary);"></i> Nutritional coaching included</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="lead-form">
+                    <h3 style="color: white; margin-bottom: 25px;">Get Your Free Trial</h3>
+                    <form id="leadForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="goal">Primary Fitness Goal</label>
+                            <select id="goal" name="goal" required>
+                                <option value="">Select your goal</option>
+                                <option value="weight_loss">Weight Loss</option>
+                                <option value="muscle_gain">Muscle Gain</option>
+                                <option value="strength">Strength Training</option>
+                                <option value="endurance">Endurance & Cardio</option>
+                                <option value="general">General Fitness</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn" style="width: 100%;">Claim Free Trial</button>
+                    </form>
+                    <p style="color: #ccc; font-size: 0.8rem; margin-top: 15px;">By submitting, you agree to our terms. We'll contact you within 24 hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Peak Performance</h3>
+                    <p>Transform your fitness journey with our state-of-the-art facilities, expert trainers, and supportive community.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#problems">Solutions</a></li>
+                        <li><a href="#membership">Membership</a></li>
+                        <li><a href="#lead">Free Trial</a></li>
+                        <li><a href="#">Class Schedule</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 123 Fitness Street, City</li>
+                        <li><i class="fas fa-phone" style="margin-right: 10px;"></i> (555) 123-4567</li>
+                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> info@peakperformance.com</li>
+                        <li><i class="fas fa-clock" style="margin-right: 10px;"></i> Mon-Fri: 5AM-11PM, Weekends: 7AM-9PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Peak Performance Gym. All rights reserved. | Designed to solve gym problems and generate leads</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('nav ul').style.display = 
+                document.querySelector('nav ul').style.display === 'flex' ? 'none' : 'flex';
+        });
+        
+        // Form submission handling
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const goal = document.getElementById('goal').value;
+            
+            // In a real application, you would send this data to a server
+            // For demonstration, we'll just show a success message
+            alert(`Thank you ${name}! Your free trial request has been submitted. We'll contact you at ${email} within 24 hours to schedule your first visit focused on ${goal}.`);
+            
+            // Reset form
+            document.getElementById('leadForm').reset();
+            
+            // Scroll to top
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if(window.innerWidth <= 768) {
+                        document.querySelector('nav ul').style.display = 'none';
+                    }
+                }
+            });
+        });
+        
+        // Add active class to current section in navigation
+        window.addEventListener('scroll', function() {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if(pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll('nav ul li a').forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
